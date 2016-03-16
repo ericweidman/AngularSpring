@@ -32,4 +32,8 @@ public class AngluarSpringController {
     public void deleteUser(@PathVariable("id") int id){
         users.delete(id);
     }
+    @RequestMapping(path = "user/{id}", method = RequestMethod.GET)
+    public void getUser(@PathVariable("id") int id){
+        users.findOne(id);
+    }
 }
