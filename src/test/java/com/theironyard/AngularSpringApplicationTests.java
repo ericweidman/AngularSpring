@@ -1,6 +1,4 @@
 package com.theironyard;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.theironyard.entities.User;
 import com.theironyard.services.UserRepository;
@@ -53,7 +51,6 @@ public class AngularSpringApplicationTests {
         );
 
         Assert.assertTrue(users.count() == 1);
-        // don't keep this line
     }
 
     @Test
@@ -63,7 +60,6 @@ public class AngularSpringApplicationTests {
         );
 
         Assert.assertTrue(users.count() == 0);
-        // don't keep this line
     }
 
 }
