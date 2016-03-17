@@ -1,5 +1,6 @@
 package com.theironyard;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.theironyard.entities.User;
 import com.theironyard.services.UserRepository;
@@ -21,8 +22,8 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 public class AngularSpringApplicationTests {
 
-    @Autowired
-    UserRepository users;
+	@Autowired
+	UserRepository users;
 
     @Autowired
     WebApplicationContext wap;
@@ -32,25 +33,27 @@ public class AngularSpringApplicationTests {
     @Before
     public void before() {
         mockMvc = MockMvcBuilders.webAppContextSetup(wap).build();
+        // keep this line
     }
 
     @Test
     public void addUser() throws Exception {
         User user = new User();
         user.setUsername("Alice");
-        user.setAddress("123 Fake Street");
-        user.setEmail("Alice@gmail.com");
+        user.setAddress("17 Princess St");
+        user.setEmail("alice@gmail.com");
 
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(user);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.post("/user")
-                        .content(json)
-                        .contentType("application/json")
+                .content(json)
+                .contentType("application/json")
         );
 
         Assert.assertTrue(users.count() == 1);
+        // don't keep this line
     }
 
     @Test
@@ -58,6 +61,9 @@ public class AngularSpringApplicationTests {
         mockMvc.perform(
                 MockMvcRequestBuilders.delete("/user/1")
         );
+
         Assert.assertTrue(users.count() == 0);
+        // don't keep this line
     }
+
 }

@@ -3,7 +3,7 @@ package com.theironyard.entities;
 import javax.persistence.*;
 
 /**
- * Created by ericweidman on 3/16/16.
+ * Created by zach on 3/16/16.
  */
 @Entity
 @Table(name = "users")
@@ -20,7 +20,6 @@ public class User {
 
     @Column(nullable = false)
     String email;
-
 
     public int getId() {
         return id;
